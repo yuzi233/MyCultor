@@ -101,6 +101,7 @@ nct = nc;
         case '/': opeasp[opost] = 4; opost++; opeasp[opost] = 0; nc=false; break;
         case '^': opeasp[opost] = 5; opost++; opeasp[opost] = 0; nc=false; break;
         case '@': opeasp[opost] = 6; opost++; opeasp[opost] = 0; nc=false; break;
+        case 'E': opeasp[opost] = 254;  opost++; opeasp[opost] = 0; nc=false; break;
     }
     if(nct==true && nc==false)
     {
@@ -110,7 +111,7 @@ nct = nc;
     }
     int WhereEnd;
     // count part
-    for(int i=1;i<Nmny;i++) // times & divide part
+    for(int i=1;i<Nmny;i++) // times,divide & E part
     {	//times part
     	if(opeasp[i] == 3 )
     	 {
@@ -118,6 +119,17 @@ nct = nc;
     		//sncy part 
 		 	WhereEnd=i;
 			rn[i-1]=rn[i];
+		 }
+		 
+		 if(opeasp[i] == 254)
+		 {
+		 	for(int t=rn[i];t != 0;t--)
+		 	{
+		 		rn[i]=rn[i]*10;
+			}
+		 	rn[i]=rn[i-1]*rn[i];
+		 	WhereEnd=i;
+			rn[i-1]=rn[i]; 
 		 }
     	
 		// divide part
