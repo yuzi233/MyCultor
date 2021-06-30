@@ -5,6 +5,7 @@ push 1:I take it to the github. But i do not know  how to use;
 push 2:It mostly work !
 */
 #include <iostream>
+#include<math.h>
 using namespace std;
 char Uscreen[128]; //the Uscreen means UPscreen,above screen ,it record what you input, the same to the Dscreen; 
 int Umny;  //the Umny is work for the Uscreen it means how many numbers you inputed
@@ -111,6 +112,26 @@ nct = nc;
     }
     int WhereEnd;
     // count part
+    
+    for(int i=1;i<Nmny;i++)// involution & Rooting part
+	{	// involution part
+		if(opeasp[i] == 5)
+		{
+			rn[i]=pow(rn[i-1],rn[i]);
+			//sncy part
+			WhereEnd=i;
+			rn[i-1]=rn[i];
+		}
+		// Rooting part
+		if(opeasp[i] == 6)
+		{
+			rn[i]=1.0/rn[i];
+			rn[i]=pow(rn[i-1],rn[i]);
+			//sncy part
+			WhereEnd=i;
+			rn[i-1]=rn[i];
+		}
+	} 
     for(int i=1;i<Nmny;i++) // times,divide & E part
     {	//times part
     	if(opeasp[i] == 3 )
@@ -128,6 +149,7 @@ nct = nc;
 		 		rn[i]=rn[i]*10;
 			}
 		 	rn[i]=rn[i-1]*rn[i];
+		 	//sncy part
 		 	WhereEnd=i;
 			rn[i-1]=rn[i]; 
 		 }
