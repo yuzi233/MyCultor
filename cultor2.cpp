@@ -15,6 +15,7 @@ void OccurOperation(int op)
     {
         numbers[head]/=10;
     }
+    dot=false; 
     if(head==0)
     {
         operations[head]=op;
